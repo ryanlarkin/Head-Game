@@ -1,4 +1,4 @@
-package rtype;
+package headGame;
 
 import java.util.Scanner;
 import Commands.*;

@@ -1,4 +1,4 @@
-package rtype;
+package headGame;
 
 /**
  * The list of commands

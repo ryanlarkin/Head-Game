@@ -1,4 +1,4 @@
-package rtype;
+package headGame;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -31,7 +31,7 @@ public class Launcher extends JFrame{
                     click = true;
                     isLooped=false;
                     System.out.println("Starting game.");
-                    new RType();
+                    new HeadGame();
                 }
             }
             else {

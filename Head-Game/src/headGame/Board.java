@@ -1,4 +1,4 @@
-package rtype;
+package headGame;
 
 
 import java.awt.Color;
@@ -26,17 +26,18 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import static rtype.Craft.x;
+import static headGame.Head.x;
 
 /**
  * The game's {@link JPanel}
  * @author eandr127
+ * @author Jan Bodnar
  */
 public class Board extends JPanel implements ActionListener {
     
     private Timer timer;
-    private Craft craft;
-    private ArrayList aliens;
+    private Head heads;
+    private ArrayList enemyHeads;
     private boolean ingame;
     private int B_WIDTH;
     private int B_HEIGHT;
@@ -67,9 +68,9 @@ public class Board extends JPanel implements ActionListener {
 
         
 
-        craft = new Craft();
+        heads = new Head();
 
-        initAliens();
+        initEnemyHeads();
 
         timer = new Timer(5, this);
         timer.start();
@@ -84,14 +85,14 @@ public class Board extends JPanel implements ActionListener {
     }
     
     /**
-     * Initialize {@link Alien}s
+     * Initialize {@link EnemyHead}s
      * @throws MalformedURLException if the users skin is null when calling {@link GetImage} 
      */
-    public void initAliens() throws MalformedURLException {
-        aliens = new ArrayList();
+    public void initEnemyHeads() throws MalformedURLException {
+        enemyHeads = new ArrayList();
 
         for (int i=0; i<pos.length - 15; i++ ) {
-            aliens.add(new Alien(pos[i][0], pos[i][1]));
+            enemyHeads.add(new EnemyHead(pos[i][0], pos[i][1]));
         }
     }
     String user = Launcher.getUser();
@@ -106,16 +107,16 @@ public class Board extends JPanel implements ActionListener {
 
         if (ingame) {
             Graphics2D g2d = (Graphics2D)g;
-            if (craft.isVisible())
-                g2d.drawImage(getImage.craft, craft.getX(), craft.getY(), this);
-                g2d.drawImage(getImage.craft, craft.getX(), craft.getY(), this);
-                for (int i = 0; i < aliens.size(); i++) {
-                    Alien a = (Alien)aliens.get(i);
+            if (heads.isVisible())
+                g2d.drawImage(getImage.head, heads.getX(), heads.getY(), this);
+                g2d.drawImage(getImage.head, heads.getX(), heads.getY(), this);
+                for (int i = 0; i < enemyHeads.size(); i++) {
+                    EnemyHead a = (EnemyHead)enemyHeads.get(i);
                     if (a.isVisible())
                         g2d.drawImage(a.getImage(), a.getX(), a.getY(), this);
                 }
             g2d.setColor(Color.WHITE);
-            g2d.drawString("Mobs left: " + aliens.size(), 5, 15);
+            g2d.drawString("Mobs left: " + enemyHeads.size(), 5, 15);
         } 
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
@@ -126,15 +127,15 @@ public class Board extends JPanel implements ActionListener {
      * @param e Actions between updates
      */
     public void actionPerformed(ActionEvent e) {
-        for (int i = 0; i < aliens.size(); i++) {
-            Alien a = (Alien) aliens.get(i);
+        for (int i = 0; i < enemyHeads.size(); i++) {
+            EnemyHead a = (EnemyHead) enemyHeads.get(i);
             if (a.isVisible()) 
                 a.move();
-            else aliens.remove(i);
+            else enemyHeads.remove(i);
         }
         
         try {
-            craft.move();
+            heads.move();
         } catch (MalformedURLException ex) {
             Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedAudioFileException ex) {
@@ -156,22 +157,22 @@ public class Board extends JPanel implements ActionListener {
     }
 
     /**
-     * Checks if the {@link Craft} hit an {@link Alien}
+     * Checks if the {@link Head} hit an {@link EnemyHead}
      * @throws MalformedURLException in case the {@link java.net.URL} does not exist
      * @throws UnsupportedAudioFileException in case the sound format of the {@link java.io.File} is unsupported
      * @throws IOException in case their is an error reading the {@link java.io.File}
      */
     public void checkCollisions() throws MalformedURLException, UnsupportedAudioFileException, IOException {
-        Rectangle r3 = craft.getBounds();
+        Rectangle r3 = heads.getBounds();
         
-        for (int j = 0; j<aliens.size(); j++) {
-            Alien a = (Alien) aliens.get(j);
+        for (int j = 0; j<enemyHeads.size(); j++) {
+            EnemyHead a = (EnemyHead) enemyHeads.get(j);
             Rectangle r2 = a.getBounds();
             
             if (r3.intersects(r2)) {
                 
-                craft.x = (int) (craft.maxX/2);
-                craft.y = (int) (craft.maxY/2);
+                heads.x = (int) (heads.maxX/2);
+                heads.y = (int) (heads.maxY/2);
                 
                 a.setVisible(false);
                 
@@ -179,13 +180,13 @@ public class Board extends JPanel implements ActionListener {
                 int value = rand.nextInt(4);
                 
                 switch (value) {
-                    case 0:  craft.play("explode1.wav");
+                    case 0:  heads.play("explode1.wav");
                         break;
-                    case 1:  craft.play("explode2.wav");
+                    case 1:  heads.play("explode2.wav");
                         break;
-                    case 2:  craft.play("explode3.wav");
+                    case 2:  heads.play("explode3.wav");
                         break;
-                    case 3:  craft.play("explode4.wav");
+                    case 3:  heads.play("explode4.wav");
                         break;
                 }
             }
@@ -202,7 +203,7 @@ public class Board extends JPanel implements ActionListener {
          * @param e the {@link java.awt.event.KeyEvent} to handle
          */
         public void keyReleased(KeyEvent e) {
-            craft.keyReleased(e);
+            heads.keyReleased(e);
         }
 
         /**
@@ -210,7 +211,7 @@ public class Board extends JPanel implements ActionListener {
          * @param e the {@link java.awt.event.KeyEvent} to handle
          */
         public void keyPressed(KeyEvent e) {
-            craft.keyPressed(e);
+            heads.keyPressed(e);
         }
     }
 }

@@ -1,4 +1,4 @@
-package rtype;
+package headGame;
 
 
 import java.awt.Image;
@@ -14,11 +14,9 @@ import javax.swing.ImageIcon;
 /**
  * The enemy heads on the {@link Board}
  * @author eandr127
+ * @author Jan Bodnar
  */
-public class Alien {
-
-    private String craft = "alien.png";
-
+public class EnemyHead {
     private int x;
     private int y;
     private int width;
@@ -28,14 +26,14 @@ public class Alien {
 
     /**
      * The enemy heads on the {@link Board}
-     * @param x the X coordinate of the {@link Alien}
-     * @param y the Y coordinate of the {@link Alien}
+     * @param x the X coordinate of the {@link EnemyHead}
+     * @param y the Y coordinate of the {@link EnemyHead}
      * @throws MalformedURLException if the users skin is null when calling {@link GetImage}
      */
-    public Alien(int x, int y) throws MalformedURLException {
+    public EnemyHead(int x, int y) throws MalformedURLException {
         String user = Launcher.getUser();
         GetImage getImage = new GetImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
-        image = getImage.craft;     
+        image = getImage.head;     
         width = 16;
         height = 16;
         visible = true;
@@ -44,71 +42,71 @@ public class Alien {
     }
 
     /**
-     * Moves the {link Alien}
+     * Moves the {link EnemyHead}
      */
     public void move() {
         if (x < 0) {
-            x = (int) Craft.maxX;
+            x = (int) Head.maxX;
         }
         else if (y < 0) {
-            y = (int) Craft.maxY;
+            y = (int) Head.maxY;
         }
-        else if(y > Craft.y && x>Craft.x){
+        else if(y > Head.y && x>Head.x){
             y-=1;
             x-=1;
         }
-        else if (y < Craft.y && x< Craft.x){
+        else if (y < Head.y && x< Head.x){
             y += 1;
             x += 1;
         }
-        else if(x > Craft.x && y< Craft.y){
+        else if(x > Head.x && y< Head.y){
             x-=1;
             y+=1;
         }
-        else if(x< Craft.x && y > Craft.y){
+        else if(x< Head.x && y > Head.y){
             x+=1;
             y-=1;
         }
-        else if(x<Craft.x){
+        else if(x<Head.x){
             x+=1;
         }
-        else if(x>Craft.x){
+        else if(x>Head.x){
             x-=1;
         }
-        else if(y < Craft.y){
+        else if(y < Head.y){
             y+=1;
         }
-        else if(y > Craft.y){
+        else if(y > Head.y){
             y-=1;
         }             
     }
     
     /**
-     * Gets the X coordinate of the {@link Alien}
-     * @return the X coordinate of the {@link Alien}
+     * Gets the X coordinate of the {@link EnemyHead}
+     * @return the X coordinate of the {@link EnemyHead}
      */ 
     public int getX() {
         return x;
     }
 
     /**
-     * Gets the X coordinate of the {@link Alien}
-     * @return the X coordinate of the {@link Alien}
+     * Gets the X coordinate of the {@link EnemyHead}
+     * @return the X coordinate of the {@link EnemyHead}
      */    
     public int getY() {
         return y;
     }
 
     /**
-     * Get if {@link Craft} is visible
-     * @return Weather {@link Craft} is visible or not
+     * Get if {@link Head} is visible
+     * @return Weather {@link Head} is visible or not
      */    
     public boolean isVisible() {
         return visible;
     }
 
     /**
-     * Set the {@link Alien} to visible or invisible
+     * Set the {@link EnemyHead} to visible or invisible
      * @param visible if true visible, if false invisible
      */    
     public void setVisible(Boolean visible) {
@@ -116,16 +114,16 @@ public class Alien {
     }
 
     /**
-     * Gets the {@link Alien}'s {@link java.awt.Image} 
-     * @return The {@link Alien}'s {@link java.awt.Image}
+     * Gets the {@link EnemyHead}'s {@link java.awt.Image} 
+     * @return The {@link EnemyHead}'s {@link java.awt.Image}
      */
     public Image getImage() {
         return image;
     }
 
     /**
-     * Gets the bounds of the {@link Alien}
-     * @return The bounds of the {@link Alien}
+     * Gets the bounds of the {@link EnemyHead}
+     * @return The bounds of the {@link EnemyHead}
      */    
     public Rectangle getBounds() {
         return new Rectangle(x, y, width, height);

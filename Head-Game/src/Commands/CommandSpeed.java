@@ -1,15 +1,15 @@
 package Commands;
 
-import rtype.Craft;
+import headGame.Head;
 
 /**
- * Sets the {@link rtype.Craft} speed
+ * Sets the {@link headGame.Head} speed
  * @author eandr127
  */
 public class CommandSpeed{
     
     /**
-     * Sets the {@link rtype.Craft} speed
+     * Sets the {@link headGame.Head} speed
      * @param cmdArgs the command arguments
      */
     public CommandSpeed(String[] cmdArgs){
@@ -32,7 +32,7 @@ public class CommandSpeed{
                 if(1 > Speed) {
                     System.out.println("Speed must be less than 1000"); 
                 }       
-            Craft.speed = Speed ;
+            Head.speed = Speed ;
             System.out.println("Speed changed to " + Speed+" (" + Speed / 100 + ")");
             }
         }

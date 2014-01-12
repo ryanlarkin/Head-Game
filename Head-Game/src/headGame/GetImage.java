@@ -1,4 +1,4 @@
-package rtype;
+package headGame;
 
 import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
@@ -9,17 +9,17 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 /**
- * Gets the image from the {@link java.net.URL} and sets the {@link Craft}'s {@link java.awt.Image} to it
+ * Gets the image from the {@link java.net.URL} and sets the {@link Head}'s {@link java.awt.Image} to it
  * @author eandr127
  */
 public class GetImage {
      private BufferedImage img;
-     BufferedImage craft;
+     BufferedImage head;
      BufferedImage Facetest256;
      Rectangle rect = new Rectangle(8, 16);
      
     /**
-     * Gets the image from {@link java.net.URL} and sets the {@link Craft}'s {@link java.awt.Image} to it
+     * Gets the image from {@link java.net.URL} and sets the {@link Head}'s {@link java.awt.Image} to it
      * @param url the URL of the image
      */ 
     public GetImage(URL url){
@@ -28,14 +28,14 @@ public class GetImage {
             img = ImageIO.read(url);
             img =cropImage(img, rect);
             Facetest256 = enlarge(img, 32);
-            craft = enlarge(img, 2);
+            head = enlarge(img, 2);
             img = enlarge(img, 2);
             if(url.equals("http://skins.minecraft.net/MinecraftSkins/Dinnerbone.png") || url.equals("http://skins.minecraft.net/MinecraftSkins/Grumm.png")){
                 img = flipImage(img,180);
                 Facetest256 = flipImage(Facetest256,180);
-                craft = flipImage(craft, 180);
+                head = flipImage(head, 180);
             }
-            array[0] = craft;
+            array[0] = head;
             array[1] = Facetest256;
          } 
          catch (IOException e) {

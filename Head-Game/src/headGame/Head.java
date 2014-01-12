@@ -1,4 +1,4 @@
-package rtype;
+package headGame;
 
 import java.awt.Color;
 import static java.awt.Color.white;
@@ -22,12 +22,9 @@ import javax.swing.ImageIcon;
 /**
  * The head on the {@link Board}
  * @author eandr127
+ * @author Jan Bodnar
  */
-public class Craft {
-
-
-    private String craft = "craft.png";
-
+public class Head {
     public static int X;
     public static int Y;
     private int width;
@@ -43,11 +40,11 @@ public class Craft {
      * The head on the {@link Board}
      * @throws MalformedURLException if the users skin is null when calling {@link GetImage}
      */
-    public Craft() throws MalformedURLException {
-        //ImageIcon ii = new ImageIcon(this.getClass().getResource("craft.png"));
+    public Head() throws MalformedURLException {
+        //ImageIcon ii = new ImageIcon(this.getClass().getResource("head.png"));
         String user = Launcher.getUser();
         GetImage getImage = new GetImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
-        image = getImage.craft;
+        image = getImage.head;
         width = image.getWidth();
         height = image.getHeight();
         visible = true;
@@ -87,7 +84,7 @@ public class Craft {
     public static double speed = 100;
     
     /**
-     * Moves the {link Craft}
+     * Moves the {link Head}
      * @throws MalformedURLException in case the {@link java.net.URL} does not exist
      * @throws UnsupportedAudioFileException in case the sound format of the {@link java.io.File} is unsupported
      * @throws IOException in case their is an error reading the {@link java.io.File}
@@ -170,16 +167,16 @@ public class Craft {
     }
     
     /**
-     * Gets the X coordinate of the {@link Craft}
-     * @return the X coordinate of the {@link Craft}
+     * Gets the X coordinate of the {@link Head}
+     * @return the X coordinate of the {@link Head}
      */
     public int getX() {
         return x;
     }
 
     /**
-     * Gets the Y coordinate of the {@link Craft}
-     * @return the Y coordinate of the {@link Craft}
+     * Gets the Y coordinate of the {@link Head}
+     * @return the Y coordinate of the {@link Head}
      */    
     public int getY() {
         return y;
@@ -248,7 +245,7 @@ public class Craft {
     }
     
     /**
-     * Set the {@link Craft} to visible or invisible
+     * Set the {@link Head} to visible or invisible
      * @param visible if true visible, if false invisible
      */
     public void setVisible(boolean visible) {
@@ -256,16 +253,16 @@ public class Craft {
     }
     
     /**
-     * Get if {@link Craft} is visible
-     * @return Weather {@link Craft} is visible or not
+     * Get if {@link Head} is visible
+     * @return Weather {@link Head} is visible or not
      */
     public boolean isVisible() {
         return visible;
     }
     
     /**
-     * Gets the bounds of the {@link Craft}
-     * @return The bounds of the {@link Craft}
+     * Gets the bounds of the {@link Head}
+     * @return The bounds of the {@link Head}
      */
     public Rectangle getBounds() {
         return new Rectangle(x, y, width, height);
