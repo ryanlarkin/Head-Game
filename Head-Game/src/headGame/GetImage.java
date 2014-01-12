@@ -30,6 +30,7 @@ public class GetImage {
             Facetest256 = enlarge(img, 32);
             head = enlarge(img, 2);
             img = enlarge(img, 2);
+            //NOTE: We are not related to Minecraft or Mojang and these files are Mojangs
             if(url.equals("http://skins.minecraft.net/MinecraftSkins/Dinnerbone.png") || url.equals("http://skins.minecraft.net/MinecraftSkins/Grumm.png")){
                 img = flipImage(img,180);
                 Facetest256 = flipImage(Facetest256,180);

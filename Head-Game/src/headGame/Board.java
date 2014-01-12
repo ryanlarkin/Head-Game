@@ -96,6 +96,7 @@ public class Board extends JPanel implements ActionListener {
         }
     }
     String user = Launcher.getUser();
+    //NOTE: We are not related to Minecraft or Mojang and these files are Mojangs
     GetImage getImage = new GetImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
 
     /***
@@ -178,7 +179,7 @@ public class Board extends JPanel implements ActionListener {
                 
                 Random rand = new Random(); 
                 int value = rand.nextInt(4);
-                
+                //NOTE: We are not related to Minecraft or Mojang and these files are Mojangs
                 switch (value) {
                     case 0:  heads.play("explode1.wav");
                         break;

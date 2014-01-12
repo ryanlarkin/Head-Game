@@ -43,6 +43,7 @@ public class Head {
     public Head() throws MalformedURLException {
         //ImageIcon ii = new ImageIcon(this.getClass().getResource("head.png"));
         String user = Launcher.getUser();
+        //NOTE: We are not related to Minecraft or Mojang and these files are Mojangs
         GetImage getImage = new GetImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
         image = getImage.head;
         width = image.getWidth();
@@ -96,6 +97,7 @@ public class Head {
         if (x > maxX) {
             Random rand = new Random(); 
             int value = rand.nextInt(4);
+            //NOTE: We are not related to Minecraft or Mojang and these files are Mojangs
             switch (value) {
                 case 0:  play("explode1.wav");
                      break;
@@ -114,6 +116,7 @@ public class Head {
         if (y > maxY){
             Random rand = new Random(); 
             int value = rand.nextInt(4);
+            //NOTE: We are not related to Minecraft or Mojang and these files are Mojangs
             switch (value) {
                 case 0:  play("explode1.wav");
                     break;
@@ -132,6 +135,7 @@ public class Head {
         if (x < minX){
             Random rand = new Random(); 
             int value = rand.nextInt(4);
+            //NOTE: We are not related to Minecraft or Mojang and these files are Mojangs
             switch (value) {
                 case 0:  play("explode1.wav");
                      break;
@@ -150,6 +154,7 @@ public class Head {
         if (y < minY){
             Random rand = new Random(); 
             int value = rand.nextInt(4);
+            //NOTE: We are not related to Minecraft or Mojang and these files are Mojangs
             switch (value) {
                 case 0:  play("explode1.wav");
                      break;

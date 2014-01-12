@@ -41,6 +41,7 @@ public static int Y = 0;
         });
         
         String user = Launcher.getUser();
+        //NOTE: We are not related to Minecraft or Mojang and these files are Mojangs
         GetImage getImage = new GetImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

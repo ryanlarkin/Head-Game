@@ -23,6 +23,7 @@ public class Launcher extends JFrame{
         while(isLooped == true){
             Scanner sc = new Scanner(System.in);
             user = sc.nextLine();
+            //NOTE: We are not related to Minecraft or Mojang
             GetImage getImage = new GetImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
             if(getImage.Facetest256 != null){
                 System.out.println("User set to "+user+".");
@@ -36,7 +37,8 @@ public class Launcher extends JFrame{
             }
             else {
                 System.out.println("The username you entered either doesn't exist or doesn't have a skin.");
-                System.out.println("Please enter your username.");
+                //NOTE: We are not related to Minecraft or Mojang
+                System.out.println("Please enter Minecraft your username.");
             }
         }   
     }
