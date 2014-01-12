@@ -4,10 +4,14 @@ import java.util.Scanner;
 import Commands.*;
 
 /**
- *
+ * Listens for commands on the Command Line
  * @author eandr127
  */
 public class CommandListener {
+    
+    /**
+     * Listens for commands on the Command Line
+     */
     public CommandListener(){
         
         CommandList commands = new CommandList(); 

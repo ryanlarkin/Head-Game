@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import static rtype.Craft.speed;
 
 /**
- *
+ * Initialization logic
  * @author eandr127
  */
 public class RType extends JFrame {
@@ -20,6 +20,11 @@ public class RType extends JFrame {
 public static int X = 0;
 public static int Y = 0;
 
+    /**
+     * Initializes the {@link Board}, initializes the
+     *  {@link Alien}, {@link Craft} and {@link Board} parameters and starts the command listener
+     * @throws MalformedURLException if the users skin is null when calling {@link GetImage}
+     */
     public RType() throws MalformedURLException {
         add(new Board());
         System.out.println("Game started");
@@ -35,7 +40,7 @@ public static int Y = 0;
         });
         
         String user = Launcher.getUser();
-        getImage getImage = new getImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
+        GetImage getImage = new GetImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setTitle("Head Game: "+ user);
@@ -49,12 +54,18 @@ public static int Y = 0;
         X=getContentPane().getSize().width;
         startCMD();
     }
-
+    /**
+     * Starts the {@link CommandListener}
+     */
     public void startCMD(){
         new CommandListener();
     }
 
-
+    /**
+     * Starts the {@link Launcher}
+     * @param args the Java arguments
+     * @throws MalformedURLException if the users skin is null when calling {@link GetImage}
+     */
     public static void main(String[] args) throws MalformedURLException {
         new Launcher();
     }

@@ -3,11 +3,15 @@ package Commands;
 import rtype.Craft;
 
 /**
- *
+ * Teleports the {@link rtype.Craft} to a specified location
  * @author eandr127
  */
 public class CommandTP{
-    
+
+    /**
+     * Teleports the {@link rtype.Craft} to a specified location
+     * @param cmdArgs the command arguments
+     */    
     public CommandTP(String[] cmdArgs){
         if(cmdArgs.length != 3){
             if (cmdArgs.length < 3){

@@ -1,10 +1,15 @@
 package Commands;
 
 /**
- *
+ * Stops the game
  * @author eandr127
  */
 public class CommandStop{
+    
+    /**
+     * Stops the game
+     * @param cmdArgs the command arguments
+     */
     public CommandStop(String[] cmdArgs){
         if(cmdArgs.length != 1){
             if (cmdArgs.length < 0){

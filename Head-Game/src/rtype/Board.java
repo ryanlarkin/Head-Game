@@ -29,7 +29,7 @@ import javax.swing.Timer;
 import static rtype.Craft.x;
 
 /**
- *
+ * The game's {@link JPanel}
  * @author eandr127
  */
 public class Board extends JPanel implements ActionListener {
@@ -53,6 +53,10 @@ public class Board extends JPanel implements ActionListener {
         {820, 128}, {490, 170}, {700, 30}
      };
 
+    /**
+     * Initialize the {@link Board}
+     * @throws MalformedURLException if the users skin is null when calling {@link GetImage}
+     */
     public Board() throws MalformedURLException {
 
         addKeyListener(new TAdapter());
@@ -71,16 +75,18 @@ public class Board extends JPanel implements ActionListener {
         timer.start();
     }
 
+    /**
+     * Gets weather it is in game or not
+     * @return weather it is in game or not
+     */
     public boolean getInGame(){
         return ingame;
     }
     
-    public void addNotify() {
-        super.addNotify();
-        B_WIDTH = getWidth();
-        B_HEIGHT = getHeight();   
-    }
-
+    /**
+     * Initialize {@link Alien}s
+     * @throws MalformedURLException if the users skin is null when calling {@link GetImage} 
+     */
     public void initAliens() throws MalformedURLException {
         aliens = new ArrayList();
 
@@ -89,8 +95,12 @@ public class Board extends JPanel implements ActionListener {
         }
     }
     String user = Launcher.getUser();
-    getImage getImage = new getImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
+    GetImage getImage = new GetImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
 
+    /***
+     * Paints the {@link Board}
+     * @param g the {@link java.awt.Graphics} to draw with
+     */
     public void paint(Graphics g) {
         super.paint(g);
 
@@ -110,7 +120,11 @@ public class Board extends JPanel implements ActionListener {
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
-
+    
+    /**
+     * Update {@link Board}
+     * @param e Actions between updates
+     */
     public void actionPerformed(ActionEvent e) {
         for (int i = 0; i < aliens.size(); i++) {
             Alien a = (Alien) aliens.get(i);
@@ -123,8 +137,6 @@ public class Board extends JPanel implements ActionListener {
             craft.move();
         } catch (MalformedURLException ex) {
             Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -135,8 +147,6 @@ public class Board extends JPanel implements ActionListener {
             checkCollisions();
         } catch (MalformedURLException ex) {
             Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedAudioFileException ex) {
             Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -145,7 +155,13 @@ public class Board extends JPanel implements ActionListener {
         repaint();  
     }
 
-    public void checkCollisions() throws MalformedURLException, LineUnavailableException, UnsupportedAudioFileException, IOException {
+    /**
+     * Checks if the {@link Craft} hit an {@link Alien}
+     * @throws MalformedURLException in case the {@link java.net.URL} does not exist
+     * @throws UnsupportedAudioFileException in case the sound format of the {@link java.io.File} is unsupported
+     * @throws IOException in case their is an error reading the {@link java.io.File}
+     */
+    public void checkCollisions() throws MalformedURLException, UnsupportedAudioFileException, IOException {
         Rectangle r3 = craft.getBounds();
         
         for (int j = 0; j<aliens.size(); j++) {
@@ -176,13 +192,23 @@ public class Board extends JPanel implements ActionListener {
         }
     }
 
-
+    /**
+     * Handles {@link java.awt.event.KeyEvent}s
+     */
     private class TAdapter extends KeyAdapter {
-
+        
+        /**
+         * Handle {@link java.awt.event.KeyEvent} pressed
+         * @param e the {@link java.awt.event.KeyEvent} to handle
+         */
         public void keyReleased(KeyEvent e) {
             craft.keyReleased(e);
         }
 
+        /**
+         * Handle {@link java.awt.event.KeyEvent} released
+         * @param e the {@link java.awt.event.KeyEvent} to handle
+         */
         public void keyPressed(KeyEvent e) {
             craft.keyPressed(e);
         }

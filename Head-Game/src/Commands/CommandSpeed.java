@@ -3,11 +3,15 @@ package Commands;
 import rtype.Craft;
 
 /**
- *
+ * Sets the {@link rtype.Craft} speed
  * @author eandr127
  */
 public class CommandSpeed{
     
+    /**
+     * Sets the {@link rtype.Craft} speed
+     * @param cmdArgs the command arguments
+     */
     public CommandSpeed(String[] cmdArgs){
         if(cmdArgs.length != 2){
             if (cmdArgs.length < 2){

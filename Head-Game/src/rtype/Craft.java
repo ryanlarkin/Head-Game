@@ -20,7 +20,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 
 /**
- *
+ * The head on the {@link Board}
  * @author eandr127
  */
 public class Craft {
@@ -39,10 +39,14 @@ public class Craft {
     private BufferedImage image;
     private boolean visible;
 
+    /**
+     * The head on the {@link Board}
+     * @throws MalformedURLException if the users skin is null when calling {@link GetImage}
+     */
     public Craft() throws MalformedURLException {
         //ImageIcon ii = new ImageIcon(this.getClass().getResource("craft.png"));
         String user = Launcher.getUser();
-        getImage getImage = new getImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
+        GetImage getImage = new GetImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
         image = getImage.craft;
         width = image.getWidth();
         height = image.getHeight();
@@ -50,7 +54,15 @@ public class Craft {
         x = 40;
         y = 60;
     }
-    public void play(String filename) throws MalformedURLException, LineUnavailableException, UnsupportedAudioFileException, IOException
+    
+    /**
+     * Plays a {@link java.io.File} inside JAR based on filename
+     * @param filename the path to {@link java.io.File}
+     * @throws MalformedURLException in case the {@link java.net.URL} does not exist
+     * @throws UnsupportedAudioFileException in case the sound format of the {@link java.io.File} is unsupported
+     * @throws IOException in case their is an error reading the {@link java.io.File}
+     */
+    public void play(String filename) throws MalformedURLException, UnsupportedAudioFileException, IOException
     {
         try {
             URL defaultSound = this.getClass().getResource(filename);
@@ -74,7 +86,13 @@ public class Craft {
     public static double maxY = 261 - 16;
     public static double speed = 100;
     
-    public void move() throws MalformedURLException, LineUnavailableException, UnsupportedAudioFileException, IOException {
+    /**
+     * Moves the {link Craft}
+     * @throws MalformedURLException in case the {@link java.net.URL} does not exist
+     * @throws UnsupportedAudioFileException in case the sound format of the {@link java.io.File} is unsupported
+     * @throws IOException in case their is an error reading the {@link java.io.File}
+     */
+    public void move() throws MalformedURLException, UnsupportedAudioFileException, IOException {
         x = (int) (x + (dx * (speed / 100)));
         y = (int) (y + (dy * (speed / 100)));
         
@@ -150,15 +168,27 @@ public class Craft {
             y = (int) (maxY / 2);
         }       
     }
-
+    
+    /**
+     * Gets the X coordinate of the {@link Craft}
+     * @return the X coordinate of the {@link Craft}
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Gets the Y coordinate of the {@link Craft}
+     * @return the Y coordinate of the {@link Craft}
+     */    
     public int getY() {
         return y;
     }
 
+    /**
+     * Handle {@link java.awt.event.KeyEvent} pressed
+     * @param e the {@link java.awt.event.KeyEvent} to handle
+     */
     public void keyPressed(KeyEvent e) {
 
         int key = e.getKeyCode();
@@ -190,6 +220,10 @@ public class Craft {
         }
     }
 
+    /**
+     * Handle {@link java.awt.event.KeyEvent} released
+     * @param e the {@link java.awt.event.KeyEvent} to handle
+     */
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
 
@@ -213,14 +247,26 @@ public class Craft {
         }
     }
     
+    /**
+     * Set the {@link Craft} to visible or invisible
+     * @param visible if true visible, if false invisible
+     */
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
-
+    
+    /**
+     * Get if {@link Craft} is visible
+     * @return Weather {@link Craft} is visible or not
+     */
     public boolean isVisible() {
         return visible;
     }
-
+    
+    /**
+     * Gets the bounds of the {@link Craft}
+     * @return The bounds of the {@link Craft}
+     */
     public Rectangle getBounds() {
         return new Rectangle(x, y, width, height);
     }

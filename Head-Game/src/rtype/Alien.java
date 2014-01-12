@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
- *
+ * The enemy heads on the {@link Board}
  * @author eandr127
  */
 public class Alien {
@@ -26,9 +26,15 @@ public class Alien {
     private boolean visible;
     private BufferedImage image;
 
+    /**
+     * The enemy heads on the {@link Board}
+     * @param x the X coordinate of the {@link Alien}
+     * @param y the Y coordinate of the {@link Alien}
+     * @throws MalformedURLException if the users skin is null when calling {@link GetImage}
+     */
     public Alien(int x, int y) throws MalformedURLException {
         String user = Launcher.getUser();
-        getImage getImage = new getImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
+        GetImage getImage = new GetImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
         image = getImage.craft;     
         width = 16;
         height = 16;
@@ -37,7 +43,9 @@ public class Alien {
         this.y = y;
     }
 
-
+    /**
+     * Moves the {link Alien}
+     */
     public void move() {
         if (x < 0) {
             x = (int) Craft.maxX;
@@ -75,31 +83,51 @@ public class Alien {
         }             
     }
     
+    /**
+     * Gets the X coordinate of the {@link Alien}
+     * @return the X coordinate of the {@link Alien}
+     */ 
     public int getX() {
         return x;
     }
 
+    /**
+     * Gets the X coordinate of the {@link Alien}
+     * @return the X coordinate of the {@link Alien}
+     */    
     public int getY() {
         return y;
     }
 
+    /**
+     * Get if {@link Craft} is visible
+     * @return Weather {@link Craft} is visible or not
+     */    
     public boolean isVisible() {
         return visible;
     }
 
+    /**
+     * Set the {@link Alien} to visible or invisible
+     * @param visible if true visible, if false invisible
+     */    
     public void setVisible(Boolean visible) {
         this.visible = visible;
     }
 
+    /**
+     * Gets the {@link Alien}'s {@link java.awt.Image} 
+     * @return The {@link Alien}'s {@link java.awt.Image}
+     */
     public Image getImage() {
         return image;
     }
 
+    /**
+     * Gets the bounds of the {@link Alien}
+     * @return The bounds of the {@link Alien}
+     */    
     public Rectangle getBounds() {
         return new Rectangle(x, y, width, height);
-    }
-
-    void isVisible(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

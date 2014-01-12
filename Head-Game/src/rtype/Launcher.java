@@ -6,20 +6,24 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 
 /**
- *
+ * The startup logic
  * @author eandr127
  */
 public class Launcher extends JFrame{
     public static String user;
     boolean isLooped = true;
     boolean click = false;
-    
-    public Launcher() throws MalformedURLException{
+
+    /**
+     * The startup logic
+     * @throws MalformedURLException in case skin does not exist
+     */
+    public Launcher() throws MalformedURLException {
         System.out.println("Please enter your username.");
         while(isLooped == true){
             Scanner sc = new Scanner(System.in);
             user = sc.nextLine();
-            getImage getImage = new getImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
+            GetImage getImage = new GetImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
             if(getImage.Facetest256 != null){
                 System.out.println("User set to "+user+".");
                 isLooped = false;
@@ -37,7 +41,11 @@ public class Launcher extends JFrame{
         }   
     }
     
-    public static String getUser(){
+    /**
+     * Gets the last user entered on startup
+     * @return The last user entered on startup
+     */
+    public static String getUser() {
         return user;
     }
 }
