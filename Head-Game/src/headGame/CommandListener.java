@@ -1,10 +1,10 @@
 package headGame;
 
-import commands.CommandTP;
-import commands.CommandSpeedUsage;
-import commands.CommandTPUsage;
-import commands.CommandStop;
-import commands.CommandSpeed;
+import Commands.CommandTP;
+import Commands.CommandSpeedUsage;
+import Commands.CommandTPUsage;
+import Commands.CommandStop;
+import Commands.CommandSpeed;
 import java.util.Scanner;
 
 /**
