@@ -1,0 +1,44 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package Commands;
+
+import rtype.Craft;
+
+/**
+ *
+ * @author Ryan
+ */
+public class CommandSpeed{
+public CommandSpeed(String[] cmdArgs){
+    if(cmdArgs.length != 2){
+    if (cmdArgs.length < 2){
+        System.out.println("Not enough args");
+        System.out.println("Usage: /speed [Speed]");
+    }
+    else{
+      System.out.println("Too many args");
+              System.out.println("Usage: /speed [Speed]");
+    }
+}
+else{
+    int Speed = Integer.parseInt(cmdArgs[1]);
+
+    if(1000 < Speed){
+       System.out.println("Speed must be less than 1000"); 
+    }
+        else{
+         if(1 > Speed){
+       System.out.println("Speed must be less than 1000"); 
+    }       
+        
+
+        Craft.speed = Speed ;
+        System.out.println("Speed changed to " + Speed+" (" + Speed / 100 + ")");
+        }
+}
+}    
+}
