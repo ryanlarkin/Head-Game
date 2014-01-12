@@ -19,26 +19,30 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import javax.swing.ImageIcon;
 
+/**
+ *
+ * @author eandr127
+ */
 public class Craft {
 
 
     private String craft = "craft.png";
 
-public static int X;
-public static int Y;
+    public static int X;
+    public static int Y;
     private int width;
     private int height;
     private int dx;
     private int dy;
-   public static int x;
+    public static int x;
     public static int y;
     private BufferedImage image;
-         private boolean visible;
+    private boolean visible;
 
     public Craft() throws MalformedURLException {
         //ImageIcon ii = new ImageIcon(this.getClass().getResource("craft.png"));
-    String user = Launcher.getUser();
-    getImage getImage = new getImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
+        String user = Launcher.getUser();
+        getImage getImage = new getImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
         image = getImage.craft;
         width = image.getWidth();
         height = image.getHeight();
@@ -47,100 +51,104 @@ public static int Y;
         y = 60;
     }
     public void play(String filename) throws MalformedURLException, LineUnavailableException, UnsupportedAudioFileException, IOException
-{
-try {
-     URL defaultSound = this.getClass().getResource(filename);
-     // getClass().getSy.getResource("/images/ads/WindowsNavigationStart.wav");
-     File soundFile = new File(defaultSound.toURI());
-     AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
-     Clip clip = AudioSystem.getClip();
-     clip.open(audioInputStream);
-     clip.start( );
-} catch (Exception ex) {
-     ex.printStackTrace();
-}
-}
+    {
+        try {
+            URL defaultSound = this.getClass().getResource(filename);
+            // getClass().getSy.getResource("/images/ads/WindowsNavigationStart.wav");
+            File soundFile = new File(defaultSound.toURI());
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start( );
+        } 
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
    
 
-double minX = 0;
-double minY = 0;
-public static double maxX = 384 - 16;
+    double minX = 0;
+    double minY = 0;
+    public static double maxX = 384 - 16;
 
-public static double maxY = 261 - 16;
-public static double speed = 100;
+    public static double maxY = 261 - 16;
+    public static double speed = 100;
+    
     public void move() throws MalformedURLException, LineUnavailableException, UnsupportedAudioFileException, IOException {
-
         x = (int) (x + (dx * (speed / 100)));
         y = (int) (y + (dy * (speed / 100)));
-if (x > maxX){
-        Random rand = new Random(); 
-        int value = rand.nextInt(4);
-        switch (value) {
-            case 0:  play("explode1.wav");
-                     break;
-            case 1:  play("explode2.wav");
-                     break;
-            case 2:  play("explode3.wav");
-                     break;
-            case 3:  play("explode4.wav");
-                     break;
-
-        }
-
-x =         (int) maxX  / 2;
-y =         (int) (maxY / 2);
-}
-if (y > maxY){
+        
+        if (x > maxX) {
             Random rand = new Random(); 
-        int value = rand.nextInt(4);
-        switch (value) {
-            case 0:  play("explode1.wav");
+            int value = rand.nextInt(4);
+            switch (value) {
+                case 0:  play("explode1.wav");
                      break;
-            case 1:  play("explode2.wav");
+                case 1:  play("explode2.wav");
                      break;
-            case 2:  play("explode3.wav");
+                case 2:  play("explode3.wav");
                      break;
-            case 3:  play("explode4.wav");
+                case 3:  play("explode4.wav");
                      break;
+            }
 
+        x = (int) maxX  / 2;
+        y = (int) (maxY / 2);
         }
-x =         (int) maxX  / 2;
-y =         (int) (maxY / 2);
-}
-if (x < minX){
+        
+        if (y > maxY){
             Random rand = new Random(); 
-        int value = rand.nextInt(4);
-        switch (value) {
-            case 0:  play("explode1.wav");
-                     break;
-            case 1:  play("explode2.wav");
-                     break;
-            case 2:  play("explode3.wav");
-                     break;
-            case 3:  play("explode4.wav");
-                     break;
-
+            int value = rand.nextInt(4);
+            switch (value) {
+                case 0:  play("explode1.wav");
+                    break;
+                case 1:  play("explode2.wav");
+                    break;
+                case 2:  play("explode3.wav");
+                    break;
+                case 3:  play("explode4.wav");
+                    break;
+            }
+                
+            x = (int) maxX  / 2;
+            y = (int) (maxY / 2);
         }
-x =         (int) maxX  / 2;
-y =         (int) (maxY / 2);
-}
-if (y < minY){
+        
+        if (x < minX){
             Random rand = new Random(); 
-        int value = rand.nextInt(4);
-        switch (value) {
-            case 0:  play("explode1.wav");
+            int value = rand.nextInt(4);
+            switch (value) {
+                case 0:  play("explode1.wav");
                      break;
-            case 1:  play("explode2.wav");
+                case 1:  play("explode2.wav");
                      break;
-            case 2:  play("explode3.wav");
+                case 2:  play("explode3.wav");
                      break;
-            case 3:  play("explode4.wav");
+                case 3:  play("explode4.wav");
                      break;
-
+            }
+            
+            x = (int) maxX  / 2;
+            y = (int) (maxY / 2);
         }
-x =         (int) maxX  / 2;
-y =         (int) (maxY / 2);
-}       
+        
+        if (y < minY){
+            Random rand = new Random(); 
+            int value = rand.nextInt(4);
+            switch (value) {
+                case 0:  play("explode1.wav");
+                     break;
+                case 1:  play("explode2.wav");
+                     break;
+                case 2:  play("explode3.wav");
+                     break;
+                case 3:  play("explode4.wav");
+                     break;
+            }
+            
+            x = (int) maxX  / 2;
+            y = (int) (maxY / 2);
+        }       
     }
 
     public int getX() {
@@ -150,10 +158,6 @@ y =         (int) (maxY / 2);
     public int getY() {
         return y;
     }
-
-   // public BufferedImage getImage() {
-    //    return getImage();
-   // }
 
     public void keyPressed(KeyEvent e) {
 
@@ -180,7 +184,7 @@ y =         (int) (maxY / 2);
         //if(key == KeyEvent.VK_ESCAPE){
             
         //}
-                if (key == KeyEvent.VK_P) {
+        if (key == KeyEvent.VK_P) {
             System.out.println("X = " + x);
             System.out.println("Y = " + y);
         }
@@ -208,7 +212,8 @@ y =         (int) (maxY / 2);
             speed /= 2;
         }
     }
-        public void setVisible(boolean visible) {
+    
+    public void setVisible(boolean visible) {
         this.visible = visible;
     }
 

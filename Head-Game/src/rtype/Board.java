@@ -28,7 +28,10 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import static rtype.Craft.x;
 
-
+/**
+ *
+ * @author eandr127
+ */
 public class Board extends JPanel implements ActionListener {
     
     private Timer timer;
@@ -86,61 +89,36 @@ public class Board extends JPanel implements ActionListener {
         }
     }
     String user = Launcher.getUser();
-getImage getImage = new getImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
+    getImage getImage = new getImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
 
     public void paint(Graphics g) {
         super.paint(g);
 
         if (ingame) {
-
             Graphics2D g2d = (Graphics2D)g;
-  if (craft.isVisible())
-      
-                g2d.drawImage(getImage.craft, craft.getX(), craft.getY(),
-                              this);
-
-                g2d.drawImage(getImage.craft, craft.getX(), craft.getY(),
-                              this);
-
-
-
-
-
-            for (int i = 0; i < aliens.size(); i++) {
-                Alien a = (Alien)aliens.get(i);
-                if (a.isVisible())
-                    g2d.drawImage(a.getImage(), a.getX(), a.getY(), this);
-            }
-
+            if (craft.isVisible())
+                g2d.drawImage(getImage.craft, craft.getX(), craft.getY(), this);
+                g2d.drawImage(getImage.craft, craft.getX(), craft.getY(), this);
+                for (int i = 0; i < aliens.size(); i++) {
+                    Alien a = (Alien)aliens.get(i);
+                    if (a.isVisible())
+                        g2d.drawImage(a.getImage(), a.getX(), a.getY(), this);
+                }
             g2d.setColor(Color.WHITE);
             g2d.drawString("Mobs left: " + aliens.size(), 5, 15);
-            
-
-
         } 
-
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
 
-
     public void actionPerformed(ActionEvent e) {
-
-        if (aliens.size()==0) {
-            
-        }
-
-
-
-
-
-
         for (int i = 0; i < aliens.size(); i++) {
             Alien a = (Alien) aliens.get(i);
             if (a.isVisible()) 
                 a.move();
             else aliens.remove(i);
         }
+        
         try {
             craft.move();
         } catch (MalformedURLException ex) {
@@ -152,6 +130,7 @@ getImage getImage = new getImage(new URL("http://skins.minecraft.net/MinecraftSk
         } catch (IOException ex) {
             Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         try {
             checkCollisions();
         } catch (MalformedURLException ex) {
@@ -167,40 +146,34 @@ getImage getImage = new getImage(new URL("http://skins.minecraft.net/MinecraftSk
     }
 
     public void checkCollisions() throws MalformedURLException, LineUnavailableException, UnsupportedAudioFileException, IOException {
-
         Rectangle r3 = craft.getBounds();
-
+        
         for (int j = 0; j<aliens.size(); j++) {
             Alien a = (Alien) aliens.get(j);
             Rectangle r2 = a.getBounds();
-
+            
             if (r3.intersects(r2)) {
-                
-               
                 
                 craft.x = (int) (craft.maxX/2);
                 craft.y = (int) (craft.maxY/2);
+                
                 a.setVisible(false);
-        Random rand = new Random(); 
-        int value = rand.nextInt(4);
-        switch (value) {
-            case 0:  craft.play("explode1.wav");
-                     break;
-            case 1:  craft.play("explode2.wav");
-                     break;
-            case 2:  craft.play("explode3.wav");
-                     break;
-            case 3:  craft.play("explode4.wav");
-                     break;
-
-        }
-
+                
+                Random rand = new Random(); 
+                int value = rand.nextInt(4);
+                
+                switch (value) {
+                    case 0:  craft.play("explode1.wav");
+                        break;
+                    case 1:  craft.play("explode2.wav");
+                        break;
+                    case 2:  craft.play("explode3.wav");
+                        break;
+                    case 3:  craft.play("explode4.wav");
+                        break;
+                }
             }
         }
-
-
-
-
     }
 
 
