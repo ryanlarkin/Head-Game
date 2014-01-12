@@ -4,7 +4,7 @@ package commands;
  * Stops the game
  * @author eandr127
  */
-public class CommandStop{
+public class CommandStop {
     
     /**
      * Stops the game

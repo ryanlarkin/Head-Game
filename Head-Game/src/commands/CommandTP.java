@@ -6,7 +6,7 @@ import headGame.Head;
  * Teleports the {@link headGame.Head} to a specified location
  * @author eandr127
  */
-public class CommandTP{
+public class CommandTP {
 
     /**
      * Teleports the {@link headGame.Head} to a specified location

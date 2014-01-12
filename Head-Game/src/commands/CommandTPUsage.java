@@ -4,7 +4,7 @@ package commands;
  * Prints the usage for {@link CommandTP} to the terminal
  * @author eandr127
  */
-public class CommandTPUsage{
+public class CommandTPUsage {
     
     /**
      * Prints the usage for {@link CommandTP} to the terminal
