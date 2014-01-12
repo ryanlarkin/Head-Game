@@ -1,7 +1,11 @@
 package headGame;
 
+import commands.CommandTP;
+import commands.CommandSpeedUsage;
+import commands.CommandTPUsage;
+import commands.CommandStop;
+import commands.CommandSpeed;
 import java.util.Scanner;
-import Commands.*;
 
 /**
  * Listens for commands on the Command Line
