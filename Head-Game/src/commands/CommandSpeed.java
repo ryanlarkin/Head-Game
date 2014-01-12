@@ -6,7 +6,7 @@ import headGame.Head;
  * Sets the {@link headGame.Head} speed
  * @author eandr127
  */
-public class CommandSpeed {
+public class CommandSpeed{
     
     /**
      * Sets the {@link headGame.Head} speed
