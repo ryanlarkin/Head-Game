@@ -23,7 +23,7 @@ public class Launcher extends JFrame{
         while(isLooped == true){
             Scanner sc = new Scanner(System.in);
             user = sc.nextLine();
-            GetImage1 getImage = new GetImage1(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
+            GetImage getImage = new GetImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
             if(getImage.Facetest256 != null){
                 System.out.println("User set to "+user+".");
                 isLooped = false;

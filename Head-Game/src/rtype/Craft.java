@@ -41,12 +41,12 @@ public class Craft {
 
     /**
      * The head on the {@link Board}
-     * @throws MalformedURLException if the users skin is null when calling {@link GetImage1}
+     * @throws MalformedURLException if the users skin is null when calling {@link GetImage}
      */
     public Craft() throws MalformedURLException {
         //ImageIcon ii = new ImageIcon(this.getClass().getResource("craft.png"));
         String user = Launcher.getUser();
-        GetImage1 getImage = new GetImage1(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
+        GetImage getImage = new GetImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
         image = getImage.craft;
         width = image.getWidth();
         height = image.getHeight();

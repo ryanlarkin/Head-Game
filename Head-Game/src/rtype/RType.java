@@ -23,7 +23,7 @@ public static int Y = 0;
     /**
      * Initializes the {@link Board}, initializes the
      *  {@link Alien}, {@link Craft} and {@link Board} parameters and starts the command listener
-     * @throws MalformedURLException if the users skin is null when calling {@link GetImage1}
+     * @throws MalformedURLException if the users skin is null when calling {@link GetImage}
      */
     public RType() throws MalformedURLException {
         add(new Board());
@@ -40,7 +40,7 @@ public static int Y = 0;
         });
         
         String user = Launcher.getUser();
-        GetImage1 getImage = new GetImage1(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
+        GetImage getImage = new GetImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setTitle("Head Game: "+ user);
@@ -64,7 +64,7 @@ public static int Y = 0;
     /**
      * Starts the {@link Launcher}
      * @param args the Java arguments
-     * @throws MalformedURLException if the users skin is null when calling {@link GetImage1}
+     * @throws MalformedURLException if the users skin is null when calling {@link GetImage}
      */
     public static void main(String[] args) throws MalformedURLException {
         new Launcher();

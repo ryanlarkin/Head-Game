@@ -30,11 +30,11 @@ public class Alien {
      * The enemy heads on the {@link Board}
      * @param x the X coordinate of the {@link Alien}
      * @param y the Y coordinate of the {@link Alien}
-     * @throws MalformedURLException if the users skin is null when calling {@link GetImage1}
+     * @throws MalformedURLException if the users skin is null when calling {@link GetImage}
      */
     public Alien(int x, int y) throws MalformedURLException {
         String user = Launcher.getUser();
-        GetImage1 getImage = new GetImage1(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
+        GetImage getImage = new GetImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
         image = getImage.craft;     
         width = 16;
         height = 16;

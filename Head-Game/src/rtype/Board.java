@@ -55,7 +55,7 @@ public class Board extends JPanel implements ActionListener {
 
     /**
      * Initialize the {@link Board}
-     * @throws MalformedURLException if the users skin is null when calling {@link GetImage1}
+     * @throws MalformedURLException if the users skin is null when calling {@link GetImage}
      */
     public Board() throws MalformedURLException {
 
@@ -85,7 +85,7 @@ public class Board extends JPanel implements ActionListener {
     
     /**
      * Initialize {@link Alien}s
-     * @throws MalformedURLException if the users skin is null when calling {@link GetImage1} 
+     * @throws MalformedURLException if the users skin is null when calling {@link GetImage} 
      */
     public void initAliens() throws MalformedURLException {
         aliens = new ArrayList();
@@ -95,7 +95,7 @@ public class Board extends JPanel implements ActionListener {
         }
     }
     String user = Launcher.getUser();
-    GetImage1 getImage = new GetImage1(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
+    GetImage getImage = new GetImage(new URL("http://skins.minecraft.net/MinecraftSkins/"+user+".png"));
 
     /***
      * Paints the {@link Board}

@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
  * Gets the image from the {@link java.net.URL} and sets the {@link Craft}'s {@link java.awt.Image} to it
  * @author eandr127
  */
-public class GetImage1 {
+public class GetImage {
      private BufferedImage img;
      BufferedImage craft;
      BufferedImage Facetest256;
@@ -22,7 +22,7 @@ public class GetImage1 {
      * Gets the image from {@link java.net.URL} and sets the {@link Craft}'s {@link java.awt.Image} to it
      * @param url the URL of the image
      */ 
-    public GetImage1(URL url){
+    public GetImage(URL url){
         BufferedImage[] array = new BufferedImage[2];
         try {
             img = ImageIO.read(url);
