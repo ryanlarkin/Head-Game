@@ -1,1 +1,1 @@
-TODO: Fix launching issues
+TODO: Fix messed up AI
